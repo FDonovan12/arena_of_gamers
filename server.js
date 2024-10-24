@@ -29,7 +29,7 @@ const User = sequelize.define(
             allowNull: false,
         },
         nbTournament: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         cityTournament: {
@@ -74,7 +74,7 @@ sequelize.sync().then(() => {
 const server = http.createServer((req, res) => {
     let filePath = path.join(
         __dirname,
-        'public',
+        '',
         req.url === '/' ? 'index.html' : req.url
     );
 
