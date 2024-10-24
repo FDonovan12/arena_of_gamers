@@ -1,39 +1,36 @@
 const socket = io();
 
 document.querySelector('#form-inscription').addEventListener('submit', (event) => {
-    console.log('submit');
     event.preventDefault();
     const firstName = document.querySelector('#first').value;
-    const lastName = document.querySelector('#last').value;
+    const name = document.querySelector('#last').value;
     const email = document.querySelector('#email').value;
-    const birthDate = document.querySelector('#birthdate').value;
-    const eventAttended = document.querySelector('#quantity').value;
+    const birthAt = document.querySelector('#birthdate').value;
+    const nbTournament = document.querySelector('#quantity').value;
     const eventCity = Array.from(document.querySelectorAll('[name="location"]')).filter(
         (location) => location.checked
     );
-    const cityName = eventCity.empty ? '' : eventCity[0].value;
-    const cgv = document.querySelector('#checkbox1').value;
-    const newsletter = document.querySelector('#checkbox2').value;
+    const cityTournament = eventCity.empty ? '' : eventCity[0].value;
+    const cgv = document.querySelector('#checkbox1').checked;
+    const newsletter = document.querySelector('#checkbox2').checked;
 
     const formIsValid =
-        firstName && lastName && email && birthDate && cityName && cgv && newsletter;
+        firstName && name && email && birthAt && nbTournament && cityTournament && cgv;
 
     const user = {
         firstName,
-        lastName,
+        name,
         email,
-        birthDate,
-        cityName,
-        cgv,
+        birthAt,
+        nbTournament,
+        cityTournament,
         newsletter,
     };
-    console.log('before');
-    console.log(formIsValid);
-    console.log(user);
     if (formIsValid) {
         console.log('valid');
         console.log(user);
         socket.emit('newUser', user);
     } else {
+        console.log("Can't submit");
     }
 });
