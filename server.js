@@ -4,19 +4,60 @@ const path = require('path');
 const socketIo = require('socket.io');
 const { Sequelize, DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize('db_chat', 'root', '', {
+const sequelize = new Sequelize('arena_of_gamer_db', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
 });
 
-const Message = sequelize.define(
-    'Message',
+const User = sequelize.define(
+    'User',
     {
-        username: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        message: {
+        firstname: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        birthAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        nbTournament: {
+            type: DataTypes.NUMBER,
+            allowNull: false,
+        },
+        cityTournament: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        wantMail: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
+    },
+    {
+        timestamps: true,
+    }
+);
+
+const Contact = sequelize.define(
+    'Contact',
+    {
+        user: {
+            type: DataTypes.User,
+            allowNull: false,
+        },
+        subject: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        content: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -31,7 +72,11 @@ sequelize.sync().then(() => {
 });
 
 const server = http.createServer((req, res) => {
-    let filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
+    let filePath = path.join(
+        __dirname,
+        'public',
+        req.url === '/' ? 'index.html' : req.url
+    );
 
     let extname = path.extname(filePath);
     let contentType = 'text/html';
@@ -61,13 +106,16 @@ const io = socketIo(server);
 io.on('connection', (socket) => {
     console.log('Un utilisateur est connecté');
 
-    Message.findAll().then((messages) => {
-        messages.forEach((message) => socket.emit('chatMessage', message));
+    // Message.findAll().then((messages) => {
+    //     messages.forEach((message) => socket.emit('chatMessage', message));
+    // });
+
+    socket.on('newUser', (data) => {
+        User.create(data);
     });
 
-    socket.on('newMessage', (data) => {
-        Message.create(data)
-        .then(io.emit('chatMessage', data));
+    socket.on('newContact', (data) => {
+        Contact.create(data);
     });
 
     socket.on('disconnect', () => {
