@@ -8,12 +8,17 @@ const cityName= eventCity.empty ? "" : eventCity.value;
 const cgv = document.getElementById("checkbox1").value;
 const newsletter = document.getElementById("checkbox2").value;
 
+const socket = io();
+
+const formIsValid = firstName&&lastName&&email&&birthDate&&cityName&&cgv&&newsletter;
+
 document.getElementById('form-inscription').addEventListener('submit', function(event) {
 
-    if (!name||!email){
+    if (formIsValid){
+        alert("its all ok");
+        socket.emit("newUser", {firstName, lastName, email, birthDate, cityName, cgv, newsletter});
+    } else{
         alert("fields required");
         event.prenventDefault();
-    } else{
-        alert("its all ok");
     }
 });
