@@ -49,8 +49,8 @@ const User = sequelize.define(
 const Contact = sequelize.define(
     'Contact',
     {
-        user: {
-            type: DataTypes.User,
+        email: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
         subject: {
@@ -72,11 +72,7 @@ sequelize.sync().then(() => {
 });
 
 const server = http.createServer((req, res) => {
-    let filePath = path.join(
-        __dirname,
-        'public',
-        req.url === '/' ? 'index.html' : req.url
-    );
+    let filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
 
     let extname = path.extname(filePath);
     let contentType = 'text/html';
