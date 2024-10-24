@@ -29,7 +29,7 @@ const User = sequelize.define(
             allowNull: false,
         },
         nbTournament: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         cityTournament: {
