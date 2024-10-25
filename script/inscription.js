@@ -1,36 +1,36 @@
-const firstName = document.getElementById("first").value;
-const lastName = document.getElementById("last").value;
-const email = document.getElementById("email").value;
-const birthDate = document.getElementById("birthdate").value;
-const eventAttended = document.getElementById("quantity").value;
-const eventCity = document.querySelectorAll('[name="location"]').filter((location) => location.checked)
-const cityName= eventCity.empty ? "" : eventCity[0].value;
-const cgv = document.getElementById("checkbox1").value;
-const newsletter = document.getElementById("checkbox2").value;
-
 const socket = io();
 
-const formIsValid = firstName&&lastName&&email&&birthDate&&cityName&&cgv&&newsletter;
+document.querySelector('#form-inscription').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const firstName = document.querySelector('#first').value;
+    const name = document.querySelector('#last').value;
+    const email = document.querySelector('#email').value;
+    const birthAt = document.querySelector('#birthdate').value;
+    const nbTournament = document.querySelector('#quantity').value;
+    const eventCity = Array.from(document.querySelectorAll('[name="location"]')).filter(
+        (location) => location.checked
+    );
+    const cityTournament = eventCity.empty ? '' : eventCity[0].value;
+    const cgv = document.querySelector('#checkbox1').checked;
+    const newsletter = document.querySelector('#checkbox2').checked;
 
-const user = {
-    firstName,
-    lastName,
-    email,
-    birthDate,
-    cityName,
-    cgv,
-    newsletter,
-};
-console.log('before');
-console.log(formIsValid);
-console.log(user);
-if (formIsValid) {
-    console.log('valid');
-    console.log(user);
-    socket.emit('newUser', user);
-} else {
-}
+    const formIsValid =
+        firstName && name && email && birthAt && nbTournament && cityTournament && cgv;
 
-// socket.on('submit', (data) => {
-//     createUser(data.lastName, data.firstName, data.birthDate, data.email, data.cgv, data.newsletter, data.cityName);
-// });
+    const user = {
+        firstName,
+        name,
+        email,
+        birthAt,
+        nbTournament,
+        cityTournament,
+        newsletter,
+    };
+    if (formIsValid) {
+        console.log('valid');
+        console.log(user);
+        socket.emit('newUser', user);
+    } else {
+        console.log("Can't submit");
+    }
+});
