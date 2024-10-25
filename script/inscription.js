@@ -13,9 +13,16 @@ document.querySelector('#form-inscription').addEventListener('submit', (event) =
     const cityTournament = eventCity.empty ? '' : eventCity[0].value;
     const cgv = document.querySelector('#checkbox1').checked;
     const newsletter = document.querySelector('#checkbox2').checked;
+    const regexEmail = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
 
     const formIsValid =
-        firstName && name && email && birthAt && nbTournament && cityTournament && cgv;
+        firstName &&
+        name &&
+        regexEmail.test(email) &&
+        birthAt &&
+        nbTournament &&
+        cityTournament &&
+        cgv;
 
     const user = {
         firstName,
@@ -34,6 +41,6 @@ document.querySelector('#form-inscription').addEventListener('submit', (event) =
         modalbg.style.display = 'none';
     } else {
         console.log("Can't submit");
-        alert("Veuillez renseigner tous les champs");
+        alert('Veuillez renseigner tous les champs');
     }
 });
