@@ -52,12 +52,7 @@
                 <div class="content">
                     <span class="close"></span>
                     <div class="modal-body">
-                        <form
-                            name="reserve"
-                            action="index.html"
-                            method="get"
-                            id="form-inscription"
-                            onsubmit="return validate();">
+                        <form name="reserve" action="index.html" method="get" id="form-inscription">
                             <div class="formData">
                                 <label>Prénom</label>
                                 <br />
@@ -177,7 +172,7 @@
                                     class="checkbox-input"
                                     type="checkbox"
                                     id="checkbox1"
-                                    checked />
+                                    required />
                                 <label class="checkbox2-label" for="checkbox1" required>
                                     <span class="checkbox-icon"></span>
                                     J'ai lu et accepté les conditions d'utilisation.
@@ -204,6 +199,7 @@
             <p class="copyrights">Copyright 2014 - 2024, Game-In - Arena Of Gamers</p>
         </footer>
         <script src="modal.js"></script>
-        <script src="inscription.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="script/inscription.js"></script>
     </body>
 </html>
