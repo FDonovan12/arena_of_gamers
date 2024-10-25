@@ -26,6 +26,7 @@ document.querySelector('#form-inscription').addEventListener('submit', (event) =
         cityTournament,
         newsletter,
     };
+    console.log(user);
     if (formIsValid) {
         console.log('valid');
         console.log(user);
@@ -33,5 +34,6 @@ document.querySelector('#form-inscription').addEventListener('submit', (event) =
         modalbg.style.display = 'none';
     } else {
         console.log("Can't submit");
+        alert("Veuillez renseigner tous les champs");
     }
 });
