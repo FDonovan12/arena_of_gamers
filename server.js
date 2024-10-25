@@ -16,7 +16,7 @@ const User = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        firstname: {
+        firstName: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -36,7 +36,7 @@ const User = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        wantMail: {
+        newsletter: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
@@ -111,6 +111,7 @@ io.on('connection', (socket) => {
     // });
 
     socket.on('newUser', (data) => {
+        console.log(data);
         User.create(data);
     });
 

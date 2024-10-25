@@ -26,11 +26,12 @@ document.querySelector('#form-inscription').addEventListener('submit', (event) =
         cityTournament,
         newsletter,
     };
+    console.log(user);
     if (formIsValid) {
         console.log('valid');
         console.log(user);
         socket.emit('newUser', user);
-        window.location.reload();
+        // window.location.reload();
     } else {
         console.log("Can't submit");
     }
