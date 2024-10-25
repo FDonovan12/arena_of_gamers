@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Nous contacter</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
     <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link
-            href="https://fonts.googleapis.com/css?family=DM+Sans"
-            rel="stylesheet"/>
+        href="https://fonts.googleapis.com/css?family=DM+Sans"
+        rel="stylesheet" />
 </head>
 <body>
 <header class="topnav" id="myTopnav">
     <div class="header-logo">
-        <img alt="logo" src="asset/logo_game-in.png"/>
+        <img alt="logo" src="asset/logo_game-in.png" />
     </div>
     <div class="main-navbar">
         <a href="#" class="active"><span>Accueil</span></a>
@@ -31,13 +31,19 @@
 <main>
     <h1>Nous contacter</h1>
     <form id="contactForm">
-        <label for="formMail">Votre adresse Email : </label>
-        <input id="formMail" type="email"><br>
-        <label for="formSubject">Sujet : </label>
-        <input id="formSubject" type="text"><br>
-        <label for="formContent">Votre message : </label><br>
-        <textarea id="formContent" rows="12" cols="45"></textarea><br>
-        <button id="formSubmit" type="submit" value="submit">Envoyer</button>
+        <div class="formData">
+            <label for="formMail">Votre adresse Email : </label>
+            <input id="formMail" type="email"><br>
+        </div>
+        <div class="formData">
+            <label for="formSubject">Sujet : </label>
+            <input id="formSubject" type="text"><br>
+        </div>
+        <div class="formData">
+            <label for="formContent">Votre message : </label><br>
+            <textarea id="formContent" rows="12" cols="45"></textarea><br>
+        </div>
+        <button id="formSubmit" class="button" type="submit" value="submit">Envoyer</button>
     </form>
 </main>
 <footer>
