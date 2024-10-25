@@ -8,7 +8,7 @@ socket.on("pastEvent", (data) => {
     
 });
 
-afficherPastEvents(data){
+function afficherPastEvents(data) {
     console.log(data);
     
     const name = data.name;
