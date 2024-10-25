@@ -11,7 +11,7 @@ contactForm.addEventListener("submit", event => {
     const content = formContent.value;
     if (email && subject && content) {
         socket.emit("newContact", { email, subject, content });
-        alert("Success");
+        alert("Votre message a été envoyé, merci !");
     } else {
         alert("Veuillez renseigner tous les champs");
     }
