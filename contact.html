@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Nous contacter</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <link rel="stylesheet" href="modal.css" />
     <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link
-        href="https://fonts.googleapis.com/css?family=DM+Sans"
-        rel="stylesheet" />
+            href="https://fonts.googleapis.com/css?family=DM+Sans"
+            rel="stylesheet"/>
 </head>
 <body>
 <header class="topnav" id="myTopnav">
@@ -18,11 +18,11 @@
         <img alt="logo" src="asset/logo_game-in.png" />
     </div>
     <div class="main-navbar">
-        <a href="#" class="active"><span>Accueil</span></a>
-        <a href="#"><span>Évènement à venir</span></a>
-        <a href="#"><span>À propos</span></a>
-        <a href="#"><span>Évènements passés</span></a>
-        <a href="#"><span>Contact</span></a>
+        <a href="/"><span>Accueil</span></a>
+        <a href="/future_event.html"><span>Évènement à venir</span></a>
+        <a href="/about.html"><span>À propos</span></a>
+        <a href="/past_event.html"><span>Évènements passés</span></a>
+        <a href="/contact.html" class="active"><span>Contact</span></a>
         <a href="javascript:void(0);" class="icon" onclick="editNav()">
             <i class="fa fa-bars"></i>
         </a>
@@ -32,8 +32,8 @@
     <h1>Nous contacter</h1>
     <form id="contactForm">
         <div class="formData">
-            <label for="formMail">Votre adresse Email : </label>
-            <input id="formMail" type="email"><br>
+        <label for="formMail">Votre adresse Email : </label>
+        <input id="formMail" type="email"><br>
         </div>
         <div class="formData">
             <label for="formSubject">Sujet : </label>
@@ -43,7 +43,7 @@
             <label for="formContent">Votre message : </label><br>
             <textarea id="formContent" rows="12" cols="45"></textarea><br>
         </div>
-        <button id="formSubmit" class="button" type="submit" value="submit">Envoyer</button>
+        <button id="formSubmit" type="submit" value="submit">Envoyer</button>
     </form>
 </main>
 <footer>
