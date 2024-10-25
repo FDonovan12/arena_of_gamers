@@ -7,16 +7,19 @@ socket.on('futureEvent', (data) => {
     printFutureEvent(data);
 });
 
-function printFutureEvent(futureEvent) {
+function printFutureEvent(futureEvents) {
     console.log('printFutureEvent');
     const main = document.querySelector('#futureEvent');
-    const mainDiv = document.createElement('div');
-    mainDiv.innerHTML = `
+    main.innerHTML = '';
+    futureEvents.forEach((futureEvent) => {
+        const mainDiv = document.createElement('div');
+        mainDiv.innerHTML = `
         <div>${futureEvent.name}</div>
         <div>${futureEvent.city}</div>
         <div>${futureEvent.eventDate}</div>
     `;
-    main.appendChild(mainDiv);
+        main.appendChild(mainDiv);
+    });
 }
 
 console.log('end futureEvent');

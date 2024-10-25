@@ -93,11 +93,7 @@ sequelize.sync().then(() => {
 });
 
 const server = http.createServer((req, res) => {
-    let filePath = path.join(
-        __dirname,
-        '',
-        req.url === '/' ? 'index.html' : req.url
-    );
+    let filePath = path.join(__dirname, '', req.url === '/' ? 'index.html' : req.url);
 
     let extname = path.extname(filePath);
     let contentType = 'text/html';
@@ -136,15 +132,17 @@ io.on('connection', (socket) => {
     });
 
     Event.findAll().then((events) => {
-        events
-            .filter((event) => new Date(event.eventDate) < new Date())
-            .forEach((pastEvent) => socket.emit('pastEvent', pastEvent));
+        socket.emit(
+            'pastEvent',
+            events.filter((event) => new Date(event.eventDate) < new Date())
+        );
     });
 
     Event.findAll().then((events) => {
-        events
-            .filter((event) => new Date(event.eventDate) >= new Date())
-            .forEach((futureEvent) => socket.emit('futureEvent', futureEvent));
+        socket.emit(
+            'futureEvent',
+            events.filter((event) => new Date(event.eventDate) >= new Date())
+        );
     });
 
     socket.on('newContact', (data) => {
