@@ -1,12 +1,18 @@
-const email = document.getElementById("formMail");
-const subject = document.getElementById("formSubject");
-const content = document.getElementById("formContent");
 const socket = io();
-const formIsValid = email && subject && content;
+const contactForm = document.getElementById('contactForm');
+const formMail = document.getElementById('formMail');
+const formSubject = document.getElementById('formSubject');
+const formContent = document.getElementById('formContent');
 
-document.getElementById("contactForm").addEventListener("submit", event => {
-    const email = document.getElementById("formMail");
-    const subject = document.getElementById("formSubject");
-    const message = document.getElementById("formMessage");
-
+contactForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const email = formMail.value;
+    const subject = formSubject.value;
+    const content = formContent.value;
+    if (email && subject && content) {
+        socket.emit("newContact", { email, subject, content });
+        alert("Success");
+    } else {
+        alert("Veuillez renseigner tous les champs");
+    }
 })
