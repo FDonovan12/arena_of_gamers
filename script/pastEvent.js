@@ -6,7 +6,7 @@ socket.on('pastEvent', (data) => {
 });
 
 function printPastEvent(pastEvents) {
-    console.log(pastEvent);
+    console.log(pastEvents);
     const main = document.querySelector('#pastEvent');
     main.innerHTML = '';
     pastEvents.forEach((pastEvent) => {
