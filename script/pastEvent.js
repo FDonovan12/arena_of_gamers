@@ -10,12 +10,12 @@ function printPastEvent(pastEvents) {
     const main = document.querySelector('#pastEvent');
     main.innerHTML = '';
     pastEvents.forEach((pastEvent) => {
-        const mainDiv = document.createElement('div');
-        mainDiv.innerHTML = `
+        const eventDiv = document.createElement('div');
+        eventDiv.innerHTML = `
     <div>${pastEvent.name}</div>
     <div>${pastEvent.city}</div>
     <div>${pastEvent.eventDate}</div>
     `;
-        main.appendChild(mainDiv);
+        main.appendChild(eventDiv);
     });
 }

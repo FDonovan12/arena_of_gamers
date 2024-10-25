@@ -12,13 +12,13 @@ function printFutureEvent(futureEvents) {
     const main = document.querySelector('#futureEvent');
     main.innerHTML = '';
     futureEvents.forEach((futureEvent) => {
-        const mainDiv = document.createElement('div');
-        mainDiv.innerHTML = `
+        const eventDiv = document.createElement('div');
+        eventDiv.innerHTML = `
         <div>${futureEvent.name}</div>
         <div>${futureEvent.city}</div>
         <div>${futureEvent.eventDate}</div>
     `;
-        main.appendChild(mainDiv);
+        main.appendChild(eventDiv);
     });
 }
 
