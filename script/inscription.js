@@ -30,6 +30,7 @@ document.querySelector('#form-inscription').addEventListener('submit', (event) =
         console.log('valid');
         console.log(user);
         socket.emit('newUser', user);
+        window.location.reload();
     } else {
         console.log("Can't submit");
     }
