@@ -2,22 +2,19 @@ const socket = io();
 const eventBox = document.getElementsByClassName('active');
 
 socket.on("pastEvent", (data) => {
-    data.forEach(element => {
         afficherPastEvents(data);
-    });
-    
 });
 
-function afficherPastEvents(data) {
-    console.log(data);
-    
-    const name = data.name;
-    const city = data.city;
-    const eventDate = data.eventDate;
+function afficherPastEvents(pastEvent) {
 
-    const pastEventDiv = document.createElement('div')
-    
-    
-    messageDiv.innerHTML = `<span>${name}, ${city}, ${eventDate}`;
-    eventBox.appendChild(pastEventDiv)
+    const main = document.querySelector('#pastEvent');
+    const mainDiv = document.createElement('div');
+
+    mainDiv = document.createElement('div')
+    mainDiv.innerHTML= `
+    <div>${pastEvent.name}</div>
+    <div>${pastEvent.city}</div>
+    <div>${pastEvent.eventDate}</div>
+    `;
+    document.createElement('div')
 }
