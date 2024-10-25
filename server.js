@@ -67,6 +67,27 @@ const Contact = sequelize.define(
     }
 );
 
+const Event = sequelize.define(
+    'Event',
+    {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        eventDate: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+    },
+    {
+        timestamps: true,
+    }
+);
+
 sequelize.sync().then(() => {
     console.log('Base de données synchronisée');
 });
@@ -107,11 +128,19 @@ io.on('connection', (socket) => {
     // });
 
     socket.on('newUser', (data) => {
-        console.log('newUser');
-        console.log(data);
-        console.log('name : ' + data.name);
-        console.log('firstname : ' + data.firstName);
         User.create(data);
+    });
+
+    Event.findAll().then((events) => {
+        events
+            .filter((event) => new Date(event.eventDate) >= new Date(Date.now()))
+            .forEach((pastEvent) => socket.emit('pastEvent', pastEvent));
+    });
+
+    Event.findAll().then((events) => {
+        events
+            .filter((event) => new Date(event.eventDate) < new Date(Date.now()))
+            .forEach((futureEvent) => socket.emit('futureEvent', futureEvent));
     });
 
     socket.on('newContact', (data) => {
