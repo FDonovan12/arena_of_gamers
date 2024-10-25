@@ -133,13 +133,13 @@ io.on('connection', (socket) => {
 
     Event.findAll().then((events) => {
         events
-            .filter((event) => new Date(event.eventDate) >= new Date(Date.now()))
+            .filter((event) => new Date(event.eventDate) < new Date())
             .forEach((pastEvent) => socket.emit('pastEvent', pastEvent));
     });
 
     Event.findAll().then((events) => {
         events
-            .filter((event) => new Date(event.eventDate) < new Date(Date.now()))
+            .filter((event) => new Date(event.eventDate) >= new Date())
             .forEach((futureEvent) => socket.emit('futureEvent', futureEvent));
     });
 
